@@ -1,0 +1,13 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { ArrowUpRight, Phone, Mail } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { pageMeta } from '@/lib/page-meta';
+export const Route = createFileRoute('/contact')({ head: () => pageMeta('Contact — Let’s Work Together', 'Contact Ransan Media House for studio bookings, professional photography, and creative production enquiries.'), component: Contact });
+function Contact() {
+  const [ready, setReady] = useState(false);
+  return <div className="contact-page"><section className="map-section"><iframe title="Ransan Media House studio location" src="https://maps.google.com/maps?q=RANSAN%20MEDIA%20HOUSE&t=m&z=10&output=embed&iwloc=near" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></section>
+    <section className="contact-band"><div className="container contact-layout"><div><span className="eyebrow">CONTACT US</span><h1>Let’s Work Together</h1><p>Have a project in mind or need professional photography for your brand or business? Get in touch with Ransan Media House, and our team will be happy to assist you.</p><div className="contact-detail"><h3>CALL US FOR QUERY</h3><a href="tel:+919203402083"><Phone size={16} /> +91 92034 02083</a></div><div className="contact-detail"><h3>SEND US EMAIL</h3><a href="mailto:ransanstudios@gmail.com"><Mail size={16} /> ransanstudios@gmail.com</a></div></div>
+    <form className="contact-form" onSubmit={event => { event.preventDefault(); const data = new FormData(event.currentTarget); const subject = `Website enquiry from ${data.get('name')}`; const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nPhone: ${data.get('phone')}\n\n${data.get('message')}`; window.location.href = `mailto:ransanstudios@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; setReady(true); }}><div className="form-row"><input aria-label="Name" name="name" placeholder="Name" autoComplete="name" required /><input aria-label="Email" name="email" type="email" placeholder="Email" autoComplete="email" required /></div><input aria-label="Phone" name="phone" type="tel" placeholder="Phone" autoComplete="tel" /><textarea aria-label="Message" name="message" placeholder="Message" required rows={5} /><Button type="submit" className="action-button">Submit Now <ArrowUpRight size={16} /></Button>{ready && <p className="form-feedback" role="status">Your enquiry is ready in your email app. Send it there to contact our team.</p>}</form></div></section>
+  </div>;
+}

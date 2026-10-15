@@ -1,0 +1,13 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { PageBanner, StudioFeatures } from '@/components/site';
+import { media } from '@/lib/media';
+import { pageMeta } from '@/lib/page-meta';
+
+export const Route = createFileRoute('/about')({ head: () => pageMeta('About Us', 'Meet Ransan Media House, a professional studio bringing creative vision and technical expertise to visual storytelling.'), component: About });
+function About() {
+  return <div className="about-page"><PageBanner title="Your Vision Amplified" description="We bring your ideas to life with clarity and impact. Ransan Media House helps creators and brands turn vision into powerful content that connects." image={media.microphone} />
+    <section className="container about-story"><img className="about-photo-left" src={media.chair} alt="Our thoughtfully designed podcast studio" /><div className="about-intro"><h3>Ransan Media House Jabalpur creates professional visual content for brands, businesses, and corporate teams.</h3><p>We work across industries and business segments, delivering high-quality photography and visual solutions tailored to modern brand requirements. Our studio combines creative vision with technical expertise to produce clean, impactful visuals.</p></div><img className="about-photo-right" src={media.wide} alt="A creative recording space with professional equipment" /><div className="about-stats"><div><strong>96<span>%</span></strong><span>CUSTOMER<br />SATISFACTION</span></div><div><strong>350<span>+</span></strong><span>PHOTOGRAPHY<br />SESSIONS</span></div></div></section>
+    <section className="why-band"><div className="container"><h2>Why Choose Us</h2><p>We offer a professionally designed studio environment backed by high-end audio and video equipment to ensure every recording meets industry standards. From podcasts and interviews to branded content and creative productions, our space is built for comfort, clarity, and creativity. With hands-on technical support and a smooth end-to-end workflow, we help creators and brands focus on their message while we take care of the production details.</p></div></section>
+    <section className="container studio-section"><h2>A Professional Studio Built for Creators</h2><p>We combine high-end production quality with a calm, creator-friendly environment.<br /> From setup to shoot, focus on your content while we handle the technical details.</p><StudioFeatures /></section>
+  </div>;
+}

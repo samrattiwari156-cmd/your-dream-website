@@ -1,0 +1,11 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { PageBanner, StudioFeatures } from '@/components/site';
+import { media } from '@/lib/media';
+import { pageMeta } from '@/lib/page-meta';
+export const Route = createFileRoute('/services')({ head: () => pageMeta('Services', 'Professional podcast production, recording, brand photography, and commercial content from Ransan Media House.'), component: Services });
+function Services() {
+  return <div className="services-page"><PageBanner title="Professional Content Simplified" description="A fully equipped studio experience built for modern creators and growing brands. Professional production support that makes every session smooth, polished, and stress-free." image={media.chair} />
+    <section className="container service-content"><div className="two-column service-row"><img src={media.hero} alt="Our fully equipped podcast production studio" /><div className="body-copy"><h2>Podcast & Studio<br />Production</h2><p>We provide end-to-end podcast and studio production solutions with professional lighting, sound, and visual setup. Our controlled studio environment ensures clean, high-quality output every time.</p><p>From recording to final delivery, we help creators and brands produce podcasts that look and sound polished, modern, and engaging.</p></div></div><StudioFeatures services />
+    <div className="two-column service-row commercial-row"><div className="body-copy"><h2>Brand & Commercial</h2><p>We create visually strong brand imagery that clearly communicates your identity and message. Our brand and commercial shoots focus on storytelling, consistency, and premium production quality to ensure your visuals leave a lasting impression across digital and print platforms.</p><p>From corporate profiles to advertising campaigns, we work closely with your brand goals to deliver impactful visuals that enhance credibility, recognition, and audience connection.</p></div><img src={media.commercial} alt="Professional commercial photography in a bright studio" /></div></section>
+  </div>;
+}
